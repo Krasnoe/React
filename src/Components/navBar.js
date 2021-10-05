@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import LogoImage from '../image/logo.svg';
-import LogoUser from '../image/user.svg';
+import SiginImg from '../image/user.svg';
 
 const NavBarStyled = styled.header`
   position: fixed;
@@ -29,25 +29,15 @@ const H1 = styled.h1`
 const ImgLogo = styled.img`
   width: 50px;
 `;
-const User = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
-`;
-const Button = styled.button`
+const Login = styled.button`
   font-size: 16px;
   background-color: transparent;
   color: white;
-  border: none;
-  cursor: pointer;
+  border-color: transparent;
 `;
 const ImgUser = styled.img`
   width: 27px;
-  padding-bottom: 3px;
 `;
-
-
 
 export const NavBar = () => (
   <NavBarStyled>
@@ -55,9 +45,9 @@ export const NavBar = () => (
       <ImgLogo src={LogoImage} alt='logo'/>
       <H1>MrDonald's</H1>
     </Logo>
-    <User>
-      <ImgUser src={LogoUser} alt='logo'/>
-      <Button>войти</Button>
-    </User>
+    <Login>
+      <ImgUser src={SiginImg} alt='войти'/>
+      <p>войти</p>
+    </Login>
   </NavBarStyled>
 )
