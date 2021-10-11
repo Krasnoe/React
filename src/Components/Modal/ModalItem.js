@@ -47,16 +47,22 @@ const Banner = styled.div`
   background-position: center;
 `;
 
-export const ModalItem = ({ openItem, setOpenItem }) => {
+export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
 
-  function closeModal(e) {
+  const closeModal = e => {
     if(e.target.id === 'overlay') {
       setOpenItem(null);
     }
   }
+  const order = {
+    ...openItem
+  };
+  const addToorder = () => {
+    setOrders([...orders, order]);
+    setOpenItem(null);
+  }
 
-  if(!openItem) return null;
-    return (
+  return (
     <Overlay id="overlay" onClick={closeModal}>
       <Modal>
         <Banner img={openItem.img}/>
@@ -65,7 +71,7 @@ export const ModalItem = ({ openItem, setOpenItem }) => {
             <p>{openItem.name}</p>
             <p>{openItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
           </Price>
-          <ModalButton>Добавить</ModalButton>
+          <ModalButton onClick={addToorder}>Добавить</ModalButton>
         </Content>
       </Modal>
     </Overlay>
