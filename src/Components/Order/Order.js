@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { ModalButton } from '../Modal/ModalButton';
 import { OrderListItem } from './OrderListItem';
+import { totalPriceItems } from '../Functions/secondaryFunction';
+import { rub } from '../Functions/secondaryFunction';
 
 const OrderStyled = styled.section`
   display: flex;
@@ -39,7 +41,11 @@ const EmptyList = styled.p`
   text-align: center;
 `;
 
+
+
 export const Order = ({ orders }) => {
+  const total = orders.reduce((result, order)=>totalPriceItems(order) + result, 0);
+
   return (
     <OrderStyled>
       <OrderTitle>ВАШ ЗАКАЗ</OrderTitle>
@@ -53,7 +59,7 @@ export const Order = ({ orders }) => {
       <Total>
         <span>Итого</span>
         <span>5</span>
-        <TotalPrice>850 Р</TotalPrice>
+        <TotalPrice>{rub(total)}</TotalPrice>
       </Total>
       <ModalButton>Оформить</ModalButton>
     </OrderStyled>
