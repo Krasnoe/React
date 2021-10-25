@@ -43,7 +43,7 @@ const EmptyList = styled.p`
 
 
 
-export const Order = ({ orders, setOrders, setOpenItem }) => {
+export const Order = ({ orders, setOrders, setOpenItem, authentication, logIn }) => {
   const deleteItem = index => {
     const newOrders = [...orders];
     newOrders.splice(index, 1);
@@ -77,12 +77,13 @@ export const Order = ({ orders, setOrders, setOpenItem }) => {
         <span>{totalCounter}</span>
         <TotalPrice>{rub(total)}</TotalPrice>
       </Total>
-      <ModalButton>Оформить</ModalButton>
+      <ModalButton onClick={() => {
+        if(authentication) {
+          console.log(orders)
+        } else {
+          logIn()
+        }
+      }}>Оформить</ModalButton>
     </OrderStyled>
-
-
   )
-
-
-
 }
