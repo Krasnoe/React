@@ -15,7 +15,6 @@ export function useAuth(authFirebase) {
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      console.log(user)
       if(user){
         setAuthentication(user)
       } else {
@@ -24,7 +23,7 @@ export function useAuth(authFirebase) {
     
     })
 
-  }, [authentication]);
+  }, [auth, authentication]);
 
   return { authentication, logIn, logOut };
 
