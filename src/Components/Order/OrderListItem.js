@@ -7,6 +7,7 @@ import { rub } from '../Functions/secondaryFunction';
 const OrderItemStyled = styled.li`
   display: flex;
   margin: 15px 0;
+  flex-wrap: wrap;
 `;
 const ItemName = styled.span`
   flex-grow: 1;
@@ -28,14 +29,26 @@ const TrashButton = styled.button`
   background-repeat: no-repeat;
   cursor: pointer;
 `;
-
-export const OrderListItem = ({ order }) => (
-  <OrderItemStyled>
-    <ItemName>{order.name}</ItemName>
-    <span>{order.count}</span>
-    <ItemPrice>{rub(totalPriceItems(order))}</ItemPrice>
-    <TrashButton/>
-  </OrderItemStyled>
+const Toppings = styled.div`
+  color: #9a9a9a;
+  font-size: 14px;
+  width: 100%;
+`;
 
 
-)
+export const OrderListItem = ({ order }) => {
+
+  const topping = order.topping.filter(item => item.checked)
+      .map(item => item.name)
+      .join(', ');
+
+  return (
+    <OrderItemStyled>
+      <ItemName>{order.name} {order.choice}</ItemName>
+      <span>{order.count}</span>
+      <ItemPrice>{rub(totalPriceItems(order))}</ItemPrice>
+      <TrashButton/>
+      {topping && <Toppings>Допы: {topping}</Toppings>}
+    </OrderItemStyled>
+  )
+};
