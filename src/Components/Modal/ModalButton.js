@@ -8,7 +8,6 @@ export const ModalButton = styled.button`
   background-color: #299B01;
   color: #fff;
   font-size: 21px;
-  padding: 20px 73px;
   align-items: center;
   border-color: transparent;
   transition-property: color, background-color, border-color;
