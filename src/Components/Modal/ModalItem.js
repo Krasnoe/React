@@ -73,7 +73,7 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
     ...openItem,
     count: counter.count,
     topping: toppings.toppings,
-    choices: choices.choice,
+    choice: choices.choice,
   };
   
 
@@ -101,7 +101,7 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
             <span>{rub(totalPriceItems(order))}</span>
           </TotalPriceItem>
           <ModalButton 
-            onClick={addOrder}
+            onClick={addOrder} 
             disabled={order.choices && !order.choice}
           >Добавить</ModalButton>
         </Content>

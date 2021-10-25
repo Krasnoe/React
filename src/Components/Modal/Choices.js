@@ -27,16 +27,15 @@ export function Choices({ openItem, choice, changeChoices }) {
         {openItem.choices.map((item, i) => (
           <ChoiceLabel key={i}>
             <ChoiceRadio 
-            type='radio'
-            name='choices'
-            checked={choice === item}
-            value={item}
-            onChange={changeChoices}
-            />
+              type='radio'
+              name='choices'
+              checked={choice === item}
+              value={item}
+              onChange={changeChoices}
+              />
             {item}
           </ChoiceLabel>
         ))}
-
       </ChoiceWrap>
     </>
   )
