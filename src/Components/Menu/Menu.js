@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from 'styled-components';
 import { ListItem } from './ListItem';
 import { Banner } from './Banner';
@@ -13,10 +13,9 @@ const SectionMenu = styled.section`
   padding: 30px;
 `;
 
-export const Menu = ({ setOpenItem }) => {
+export const Menu = () => {
 
   const res = useFetch();
-
   const dbMenu = res.response;
 
   return (
@@ -26,16 +25,12 @@ export const Menu = ({ setOpenItem }) => {
       <>
         <SectionMenu>
           <h2>Бургеры</h2>
-          <ListItem 
-              itemList={dbMenu.burger}
-              setOpenItem={setOpenItem}/>
+          <ListItem itemList={dbMenu.burger} />
         </SectionMenu>
-
         <SectionMenu>
           <h2>Закуски / Напитки</h2>
           <ListItem 
-              itemList={dbMenu.other}
-              setOpenItem={setOpenItem}/>
+              itemList={dbMenu.other} />
         </SectionMenu>
       </> : res.error ? 
       <div>Извините, мы уже разбираемся с проблемой...</div> : 
